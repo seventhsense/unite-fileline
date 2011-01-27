@@ -1,0 +1,80 @@
+*unite-fileline.txt*		unite plugin for insert a line of file contents.
+
+Version: 0.0.1
+Author : pekepeke
+License: クリエイティブ・コモンズの表示 2.1 日本ライセンス
+	 <http://creativecommons.org/licenses/by/2.1/jp/>
+
+==============================================================================
+目次						*unite-fileline-contents*
+
+概要						|unite-fileline-introduction|
+インターフェース				|unite-fileline-interface|
+  コマンド					|unite-fileline-commands|
+  変数						|unite-fileline-variables|
+  ファイル仕様					|unite-fileline-filespec|
+TODO						|unite-fileline-todo|
+更新履歴					|unite-fileline-changelog|
+
+==============================================================================
+概要						*unite-fileline-introduction*
+
+*unite-fileline* は任意ファイルの行を表示、選択し、主に、選択した
+単語をバッファ内に挿入することに適した unite source です。
+
+要件:
+- unite
+
+==============================================================================
+インターフェース				*unite-fileline-interface*
+
+------------------------------------------------------------------------------
+コマンド 					*unite-fileline-commands*
+
+:Unite fileline:{path}
+		{path} で指定されたファイルを使用して、source を起動します。
+
+:Unite fileline/{name}
+		事前登録済みパスを使用して、source を起動します。
+
+------------------------------------------------------------------------------
+変数						*unite-fileline-variables*
+
+g:unite_fileline_register_files			*g:unite_fileline_register_files*
+		起動時に fileline/{name} の source を登録するためのファイル
+		パスを指定します。
+		source の起動に使用するパスリストを指定します。
+		パスリストは配列で指定されている必要があります。
+
+		ここで指定されたパスは、fileline/{name} の形式で、source とし
+		て登録が行われます。
+		登録される source の {name} 部分には拡張子は含まれません。
+		同一 {name} が指定された場合の特別な処理(別名をつける等)は実施
+		しませんので、そのようなファイルを使用する場合は、ファイル名を
+		変更するか、もしくは、通常ソースの引数に指定して起動させる必要
+		があります。
+
+
+------------------------------------------------------------------------------
+ファイル仕様					*unite-fileline-filespec*
+
+渡されるファイルは以下の通り処理されます。
+
+- 行頭・行末の空白、タブは削除されます。
+- 行の先頭に # が存在する場合、コメント行とみなし、一覧表示の対象とはなりませ
+ん。
+- 空行、スペースのみの行は無視します。
+
+
+==============================================================================
+TODO						*unite-fileline-todo*
+
+==============================================================================
+更新履歴					*unite-fileline-changelog*
+
+
+0.0.1	2011-01-19
+	- 初版。
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0:
